@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PierresTreats.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace PierresTreats
 {
@@ -22,6 +23,10 @@ namespace PierresTreats
                         )
                       );
 
+      builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ToDoListContext>()
+                .AddDefaultTokenProviders();
+
       WebApplication app = builder.Build();
 
       // app.UseDeveloperExceptionPage();
@@ -29,6 +34,10 @@ namespace PierresTreats
       app.UseStaticFiles();
 
       app.UseRouting();
+
+      app.UseAuthentication(); 
+      app.UseAuthorization();
+
 
       app.MapControllerRoute(
           name: "default",
