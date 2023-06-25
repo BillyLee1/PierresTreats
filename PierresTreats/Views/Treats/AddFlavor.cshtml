@@ -1,0 +1,15 @@
+@model PierresTreats.Models.Treat
+<h1> Add a treat </h1>
+
+<h3> Add a treat to @Html.DisplayFor(model => model.TreatName) </h3>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.TreatId)
+
+  @Html.Label("Select Treat")
+  @Html.DropDownList("TreatId")
+
+  <input type="submit" value="Save" />
+}
+<p>@Html.ActionLink("Back to Treats", "Index")</p>

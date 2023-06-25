@@ -1,0 +1,14 @@
+@model PierresTreats.Models.Flavor
+
+@using(Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.FlavorId)
+
+  @Html.LabelFor(model => model.FlavorName)
+  @Html.EditorFor(model => model.FlavorName)
+
+  <input type="submit" value="Submit" />
+
+}
+
+<p>@Html.ActionLink("Back to Flavors", "Index")</p>
