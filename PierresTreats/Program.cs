@@ -23,6 +23,11 @@ namespace PierresTreats
                         )
                       );
 
+
+      builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<PierresTreatsContext>()
+                .AddDefaultTokenProviders();
+
       WebApplication app = builder.Build();
 
       // app.UseDeveloperExceptionPage();
@@ -31,9 +36,13 @@ namespace PierresTreats
 
       app.UseRouting();
 
+      app.UseAuthentication(); 
+      app.UseAuthorization();
+
       app.MapControllerRoute(
           name: "default",
-          pattern: "{controller=Home}/{action=Index}/{id?}");
+          pattern: "{controller=Home}/{action=Index}/{id?}"
+        );
 
       app.Run();
     }
