@@ -1,10 +1,13 @@
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using PierresTreats.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace PierresTreats.Controllers 
 {
@@ -12,6 +15,7 @@ namespace PierresTreats.Controllers
   public class FlavorsController : Controller
   {
     private readonly PierresTreatsContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
     public FlavorsController(PierresTreatsContext db)
     {
